@@ -1,0 +1,17 @@
+version: '3.7'
+
+services:
+  duplo-be:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/usr/src/app/
+      - /usr/src/app/node_modules
+      - ./nodemon.json:/usr/src/app/nodemon.json
+    container_name: duplo-be
+    expose:
+      - 4000
+    ports:
+      - '9200:9200'
+    command: npm run start:dev
